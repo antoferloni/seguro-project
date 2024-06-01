@@ -1,0 +1,21 @@
+/* Estilos para elementos ion-item similares al input de ChatGPT */
+ion-item {
+    border-radius: 40px; /* Ajusta el radio de borde para que sea más redondeado */
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1); /* Agrega una sombra más suave */
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+  }
+  
+  ion-item ion-input {
+    --padding-start: 40px; /* Ajusta el padding izquierdo para que el texto no esté muy pegado al borde */
+    --padding-end: 40px; /* Ajusta el padding derecho para que el texto no esté muy pegado al borde */
+    border: none; /* Elimina el borde del ion-input */
+    border-color: transparent; /* Asegura que el borde sea transparente */
+    box-shadow: none; /* Elimina la sombra del ion-input */
+  }
+  
+  
+  /* Opcional: Estilos para el texto dentro del ion-input */
+  ion-item ion-input::part(inner-input) {
+    font-size: 16px; /* Ajusta el tamaño de fuente según sea necesario */
+    color: #333; /* Ajusta el color del texto según sea necesario */
+  }

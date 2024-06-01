@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista Mantenimiento</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="clickSearch()" >
+        <ion-icon slot="end" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="isSearch" >
+    <ion-searchbar show-cancel-button="always" show-clear-button="always"
+    (ionClear)="clearSearch()" (ionChange)="buscarSearch($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ <ion-list lines="full">
+  <ion-item *ngFor="let mantenimiento of listaMantenimiento">
+    <ion-label> {{mantenimiento.codigo}}-{{mantenimiento.nombre}} {{mantenimiento.apellido}} </ion-label>
+ 
+    <!-- Botón para editar -->
+    <ion-buttons slot="end">
+      <ion-button color="primary" fill="solid"  [routerLink]="'/mantenimiento-edit/' + mantenimiento.id" >
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+     <!-- Botón para eliminar -->
+     <ion-buttons slot="end">
+      <ion-button  color="danger" fill="solid" (click)="eliminarMantenimiento(mantenimiento.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   
+    
+  </ion-item>
+ </ion-list>
+
+ <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+ <ion-fab slot="fixed" vertical="bottom" horizontal="end" >
+  <ion-fab-button color="success" [routerLink]="['/mantenimiento-edit/new']" >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

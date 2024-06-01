@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyecto1-b09ca": {
+      "hosting": {
+        "app": [
+          "proyecto1-b09ca"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyecto1-b09ca"
+  }
+}

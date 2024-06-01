@@ -35,3 +35,19 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+ /* Estilo para el ion-toolbar */
+ ion-toolbar {
+    --background: #66b7da; /* Color de fondo del toolbar */
+    --color: #ffffff; /* Color del texto del toolbar */
+  }
+  
+  /* Estilo para el ion-title */
+  ion-title {
+    color: #ffffff; /* Color del texto del título */
+  }
+  
+  /* Estilo para los botones en el toolbar */
+  ion-toolbar ion-button {
+    --background: transparent;
+    color: #ffffff; /* Color del icono de búsqueda */
+  }

@@ -1,0 +1,100 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> {{isNew ?  'Nuevo' : 'Editar'}} Mantenimiento</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/mantenimiento-list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>ID</ion-label>
+      <ion-input  [(ngModel)]="id" readonly="true" disabled="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Codigo</ion-label>
+      <ion-input  [(ngModel)]="mantenimiento.codigo" name="codigo" #codigo="ngModel"  required>
+      </ion-input>
+    </ion-item>
+    <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)" class="ion-padding-start">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <span *ngIf="codigo.errors && codigo.errors['required']">
+        El campo es obligatorio.
+      </span>
+    </div>
+
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="mantenimiento.nombre" name="nombre" #nombre="ngModel" required></ion-input>
+    </ion-item>
+    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="ion-padding-start">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <span *ngIf="nombre.errors && nombre.errors['required']">
+        El campo es obligatorio.
+      </span>
+    </div>
+
+    <ion-item>
+      <ion-label>Apellido</ion-label>
+      <ion-input [(ngModel)]="mantenimiento.apellido" name="apellido" #apellido="ngModel" required></ion-input>
+    </ion-item>
+    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="ion-padding-start">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <span *ngIf="apellido.errors && apellido.errors['required']">
+        El campo es obligatorio.
+      </span>
+    </div>
+
+    <ion-item>
+      <ion-label>Fecha Nac</ion-label>
+      <ion-input type="date" [(ngModel)]="mantenimiento.fecha" name="fecha" required></ion-input>
+    </ion-item>
+    <div *ngIf="!mantenimiento.fecha" class="ion-padding-start">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <span>La fecha de nacimiento es obligatoria.</span>
+    </div>
+
+    <ion-item>
+      <ion-label>Seguro</ion-label>
+      <ion-input [(ngModel)]="mantenimiento.asegurado" name="asegurado" #asegurado="ngModel" required></ion-input>
+    </ion-item>
+    <div *ngIf="asegurado.invalid && (asegurado.dirty || asegurado.touched)" class="ion-padding-start">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <span *ngIf="asegurado.errors && asegurado.errors['required']">
+        El campo es obligatorio.
+      </span>
+    </div>
+
+
+    <ion-item>
+      <ion-label>Monto</ion-label>
+      <ion-input 
+        type="number" 
+        [(ngModel)]="mantenimiento.monto" 
+        name="monto" 
+        #monto="ngModel" 
+        required
+        pattern="[0-9]*">
+      </ion-input>
+    </ion-item>
+    <div *ngIf="monto.invalid && (monto.dirty || monto.touched)" class="ion-padding-start">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <span *ngIf="monto.errors && monto.errors['required']">
+        El campo es obligatorio.
+      </span>
+      <span *ngIf="monto.errors && monto.errors['pattern']">
+        Solo se permiten números.
+      </span>
+    </div>
+    
+  </ion-list>
+  
+    <ion-button expand="block" fill="solid" (click)="guardarMantenimiento()" color="primary">
+      Guardar
+    </ion-button>
+ 
+</ion-content>
